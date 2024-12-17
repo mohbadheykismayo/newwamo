@@ -1,0 +1,308 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="theUser.master.cs" Inherits="waamowaste.theUser" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+ <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/css/animate.css">
+
+<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
+
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+        <link id="Link1" rel="shortcut icon" href="images/wamo2.ico" type="image/x-icon" />  
+<link id="Link2" rel="icon" href="images/wamo2.ico" type="image/ico" />
+
+   <%-- <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" />--%>
+
+
+<style>
+  /* Loader container */
+  .whirly-loader1 {
+    position: relative;
+    width: 150px; /* Diameter of the circle */
+    height: 150px;
+    border: 6px solid transparent; /* Invisible border */
+    border-top: 6px solid #00d48d; /* Primary color */
+    border-radius: 90%; /* Makes it circular */
+    animation: spin 1.5s linear infinite; /* Smooth spinning animation */
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  /* Text inside the loader */
+  #loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px; /* Text size */
+    font-weight: bold;
+    color: #00d48d; /* Match the loader's color */
+    font-family: Arial, sans-serif; /* Clean font */
+    text-transform: uppercase; /* Stylized text */
+  }
+
+  /* Spinning animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+    #loading-text {
+    display: block; /* Ensure it's visible */
+  }
+</style>
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <form id="form1" runat="server">
+
+                <div id="global-loader">
+<div class="whirly-loader1"> </div>
+            <p id="loading-text">Xoogaa Sug...</p>
+</div>
+
+     
+
+
+<div class="main-wrapper">
+<div class="header">
+    <div class="header-left active">
+        <a href="#" class="logo">
+            <img src="images/wamo5.png" alt="" style="width: 100%; height: 100%;" />
+        </a>
+        <a href="index.html" class="logo-small">
+            <img src="images/wamo5.png" alt="" style="width: 100%; height: 100%;" />
+        </a>
+        <a id="toggle_btn" href="javascript:void(0);">
+        </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <a id="mobile_btn" class="mobile_btn" href="#sidebar">
+        <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </a>
+
+
+       <h4 style="display:none;"><asp:Label ID="Label8" runat="server"   Text="place...."></asp:Label></h4>
+
+
+    <!-- User menu -->
+    <ul class="nav user-menu">
+        <li class="nav-item dropdown has-arrow main-drop">
+            <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+                <span class="user-img">
+              
+                    <img src="assets/img/profiles/avatar-17.jpg" />
+                    <span class="status online"></span>
+                </span>
+            </a>
+            <div class="dropdown-menu menu-drop-user">
+                <div class="profilename">
+                    <div class="profileset">
+                        <span class="user-img">
+                        
+                            <img src="assets/img/profiles/avatar-17.jpg" />
+                            <span class="status online"></span>
+                        </span>
+                        <div class="profilesets">
+                     <h4><asp:Label ID="Label1" runat="server"></asp:Label></h4>
+    <h5><asp:Label ID="Label2" runat="server"></asp:Label></h5>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <a class="dropdown-item" href="#">
+                        <i class="me-2" data-feather="user"></i> My Profile
+                    </a>
+                   
+                    <hr class="m-0">
+                  <asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-item logout pb-0" OnClick="btnLogout_Click">
+    <img src="assets/img/icons/log-out.svg" class="me-2" alt="img"> Logout
+</asp:LinkButton>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Mobile user menu -->
+    <div class="dropdown mobile-user-menu">
+        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="profile.html">My Profile</a>
+            <a class="dropdown-item" href="generalsettings.html">Settings</a>
+            <a class="dropdown-item" href="signin.html">Logout</a>
+        </div>
+    </div>
+</div>
+
+
+<%--<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul class="sidebar-buttons">
+                           <li>
+    <a href="dashbourd.aspx" class="sidebar-button">
+        <img src="assets/img/icons/sales1.svg" alt="Order" class="sidebar-icon">
+        <span>Dashbourd</span>
+    </a>
+</li>
+                           <li>
+                    <a href="crudneighbourhoods.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/sales1.svg" alt="Order" class="sidebar-icon">
+                        <span>Qeybta Xaafadaha</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="users.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/product.svg" alt="Product" class="sidebar-icon">
+                        <span>Shaqaalaha</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="houses.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/product.svg" alt="Product" class="sidebar-icon">
+                        <span>Guryaha</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="paymentga.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/cash.svg" alt="Order" class="sidebar-icon">
+                        <span>Payments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/users1.svg" alt="People" class="sidebar-icon">
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li id="adminLink" runat="server">
+                    <a href="admin.aspx" class="sidebar-button">
+                        <img src="assets/img/icons/users1.svg" alt="People" class="sidebar-icon">
+                        <span>Admin Ka</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>--%>
+    
+<div class="sidebar" id="sidebar">
+<div class="sidebar-inner slimscroll">
+<div id="sidebar-menu" class="sidebar-menu">
+<ul>
+<li>
+<a href="userdashbourd"><img src="assets/img/icons/dashboard.svg" alt="img"><span> Dashboard</span> </a>
+</li>
+        <li >
+<a href="userhouse.aspx"><img src="assets/img/icons/expense1.svg" alt="img"><span> Houses</span> </a>
+
+</li>
+    <li >
+<a href="userpayments.aspx"><img src="assets/img/icons/expense1.svg" alt="img"><span> Payment</span> </a>
+
+</li>
+     <li>
+<a href="userreport.aspx"><img src="assets/img/icons/purchase1.svg" alt="img"><span> Report</span> </a>
+
+</li>
+   <%-- <li>
+<a href="houses.aspx"><img src="assets/img/icons/purchase1.svg" alt="img"><span> Houses</span> </a>
+
+</li>
+    <li >
+<a href="users.aspx"><img src="assets/img/icons/users1.svg" alt="img"><span> Employees</span> </a>
+</li>
+<li >
+<a href="paymentga.aspx"><img src="assets/img/icons/sales1.svg" alt="img"><span> Payments</span> </a>
+
+</li>
+
+
+
+<li>
+<a href="myincome.aspx"><img src="assets/img/icons/transfer1.svg" alt="img"><span> My Income</span> </a>
+
+</li>
+ <li>
+<a href="reports.aspx"><img src="assets/img/icons/time.svg" alt="img"><span>Reports</span> </a>
+
+</li>--%>
+
+
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+    <div class="page-wrapper">
+<div class="content">
+  
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+       </asp:ContentPlaceHolder>
+        </div>
+        </div>
+    </div>
+    </form>
+
+    
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Get the current page URL
+        const currentPage = window.location.pathname.split('/').pop();
+
+        // Add the 'active' class based on the current page
+        $('.sidebar-buttons li').each(function () {
+            const link = $(this).find('a').attr('href');
+            const linkPage = link.split('/').pop(); // Get the page part of the URL
+
+            if (linkPage === currentPage) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+    });
+</script>
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/js/jquery.slimscroll.min.js"></script>
+
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/plugins/apexchart/apexcharts.min.js"></script>
+<script src="assets/plugins/apexchart/chart-data.js"></script>
+
+<script src="assets/js/script.js"></script>
+ <%--   <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script src="assets/plugins/select2/js/custom-select.js"></script>--%>
+
+    <script src="assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+<script src="assets/plugins/sweetalert/sweetalerts.min.js"></script>
+</body>
+</html>
